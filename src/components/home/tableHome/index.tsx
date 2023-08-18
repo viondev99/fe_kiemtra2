@@ -69,7 +69,7 @@ const TableHome: FC<Props> = ({ data }) => {
           <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
             <div className="overflow-hidden">
               <table className="min-w-full text-left text-sm font-light">
-                <thead className="border-b font-medium dark:border-neutral-500">
+                <thead className="border-b-2 font-medium dark:border-neutral-500">
                   <tr>
                     {rowLabel.map((it) => (
                       <th
@@ -88,7 +88,7 @@ const TableHome: FC<Props> = ({ data }) => {
                   {listProduct?.map((it: any, index: number) => (
                     <tr
                       key={it.id}
-                      className="border-b transition duration-300 ease-in-out hover:bg-neutral-200 dark:border-neutral-500 dark:hover:bg-neutral-600"
+                      className="border-b-2 transition duration-300 ease-in-out hover:bg-neutral-200 dark:border-neutral-500 dark:hover:bg-neutral-600"
                     >
                       <td
                         className={`whitespace-nowrap px-6 py-4 font-medium ${classes.rowIndex}`}
