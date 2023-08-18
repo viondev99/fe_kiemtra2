@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getAuth, deleteAuth } from "../services";
+import { getAuth, deleteAuth, putAuth } from "../services";
 
 export const ProductContext = React.createContext();
 
@@ -29,6 +29,22 @@ export function ProductContextProvider({ children }) {
     }
   };
 
+  const createProduct = async (payload) => {
+    try {
+      await postAuth('http://localhost:8000/channel', payload);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const updateProduct = async (id, payload) => {
+    try {
+      await putAuth(`http://localhost:8000/channel/${id}`, payload);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const deleteProductById = async (id) => {
     try {
       await deleteAuth(`http://localhost:8000/channel/${id}`);
@@ -43,6 +59,8 @@ export function ProductContextProvider({ children }) {
     getProductById,
     selectedItem,
     deleteProductById,
+    createProduct,
+    updateProduct,
   };
 
   return (

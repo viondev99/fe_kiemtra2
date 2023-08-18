@@ -2,6 +2,7 @@ import React, { FC, useMemo, useCallback, useState } from "react";
 import classes from "./modalDelete.module.scss";
 import Modal from "@/coreUI/Modal";
 import { useProductCtx } from "@/hooks/useProduct";
+import { ToastContainer, toast } from "react-toastify";
 
 interface Props {
   isOpen?: boolean;
@@ -15,6 +16,7 @@ const ModalDelete: FC<Props> = ({ onClose, id }) => {
   const handleDelete = useCallback(async () => {
     await productCtx?.deleteProductById(id);
     productCtx?.getListProduct();
+    toast("Deleted");
     onClose();
   }, [onClose]);
 

@@ -2,6 +2,7 @@ import React, { FC, useMemo, useCallback, useState, useEffect } from "react";
 import classes from "./modalView.module.scss";
 import Modal from "@/coreUI/Modal";
 import { useProductCtx } from "@/hooks/useProduct";
+import { ToastContainer, toast } from "react-toastify";
 
 interface Props {
   isOpen?: boolean;
@@ -41,7 +42,16 @@ const ModalEdit: FC<Props> = ({ onClose, id }) => {
     });
   };
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(async () => {
+    const payload = {
+      ChannelName: state?.ChannelName,
+      Description: state?.Description,
+      SubscriberCount: state?.SubscriberCount,
+      URL: state?.URL,
+    };
+    await productCtx?.updateProduct(id, payload);
+    productCtx?.getListProduct();
+    toast("Updated");
     onClose();
   }, [onClose]);
 
@@ -58,7 +68,6 @@ const ModalEdit: FC<Props> = ({ onClose, id }) => {
               placeholder={"enter the item1"}
               value={state?.ChannelName}
               onChange={handleOnChange("channel")}
-              
             />
           </div>
           <div>
@@ -70,7 +79,6 @@ const ModalEdit: FC<Props> = ({ onClose, id }) => {
               placeholder={"enter the item1"}
               value={state?.Description}
               onChange={handleOnChange("description")}
-              
             />
           </div>
           <div>
@@ -82,7 +90,6 @@ const ModalEdit: FC<Props> = ({ onClose, id }) => {
               placeholder={"enter the item1"}
               value={state?.SubscriberCount}
               onChange={handleOnChange("sub")}
-              
             />
           </div>
           <div>
@@ -94,7 +101,6 @@ const ModalEdit: FC<Props> = ({ onClose, id }) => {
               placeholder={"enter the item1"}
               value={state?.URL}
               onChange={handleOnChange("url")}
-              
             />
           </div>
         </div>
@@ -109,6 +115,11 @@ const ModalEdit: FC<Props> = ({ onClose, id }) => {
         content={contentModal}
         title="Create New Item"
         onSubmit={handleSubmit}
+        contentBottom={
+          <button className={classes.submit} onClick={handleSubmit}>
+            OK
+          </button>
+        }
       />
     </>
   );
