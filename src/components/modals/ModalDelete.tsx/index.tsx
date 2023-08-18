@@ -1,0 +1,46 @@
+import React, { FC, useMemo, useCallback, useState } from "react";
+import classes from "./modalDelete.module.scss";
+import Modal from "@/coreUI/Modal";
+import { useProductCtx } from "@/hooks/useProduct";
+
+interface Props {
+  isOpen?: boolean;
+  onClose: () => void;
+  id?: string;
+}
+
+const ModalDelete: FC<Props> = ({ onClose, id }) => {
+  const productCtx = useProductCtx();
+
+  const handleDelete = useCallback(async () => {
+    await productCtx?.deleteProductById(id);
+    productCtx?.getListProduct();
+    onClose();
+  }, [onClose]);
+
+  const contentModal = useMemo(() => {
+    return (
+      <div className="p-5 pb-10">
+        <div className="text-center text-xl text-orange-700">
+          ARE YOU SURE DELETE THIS ITEM?
+        </div>
+      </div>
+    );
+  }, []);
+
+  return (
+    <Modal
+      onClose={onClose}
+      content={contentModal}
+      title="Delete This Item"
+      onSubmit={handleDelete}
+      contentBottom={
+        <button className={classes.submit} onClick={handleDelete}>
+          OK
+        </button>
+      }
+    />
+  );
+};
+
+export default ModalDelete;
