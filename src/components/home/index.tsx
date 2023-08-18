@@ -28,12 +28,12 @@ const HomePage: FC = () => {
 
   return (
     <div className={cx("Container", classes.Wrapper)}>
-      <div className={classes.projectName}>Project Name</div>
+      <div className={classes.projectName}>Test 2</div>
       <div className={classes.tableWrapper}>
         <div className={classes.headerTable}>
-          <div className={classes.tableName}>Table Name</div>
+          <div className={classes.tableName}>Channel</div>
           <div className={classes.createNew} onClick={() => setShowModal(true)}>
-            Create New Item
+            Create New Channel
           </div>
         </div>
         <TableHome data={productCtx}/>

@@ -18,7 +18,7 @@ const rowLabel: ListColTableHome[] = [
   },
   {
     id: "channel_name",
-    name: "ChannelName",
+    name: "Channel Name",
   },
   {
     id: "description",
@@ -26,7 +26,7 @@ const rowLabel: ListColTableHome[] = [
   },
   {
     id: "sub",
-    name: "SubscriberCount",
+    name: "Subscriber Count",
   },
   {
     id: "url",

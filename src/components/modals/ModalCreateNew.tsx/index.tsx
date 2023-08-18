@@ -55,7 +55,7 @@ const ModalCreateNew: FC<Props> = ({ onClose }) => {
       <div className="p-5 pb-10">
         <div className="grid grid-rows-2 grid-flow-col gap-10">
           <div>
-            ChannelName
+            Channel Name
             <input
               type="text"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -75,7 +75,7 @@ const ModalCreateNew: FC<Props> = ({ onClose }) => {
             />
           </div>
           <div>
-            SubscriberCount
+            Subscriber Count
             <input
               type="text"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

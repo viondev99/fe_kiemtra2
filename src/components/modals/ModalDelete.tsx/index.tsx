@@ -24,7 +24,7 @@ const ModalDelete: FC<Props> = ({ onClose, id }) => {
     return (
       <div className="p-5 pb-10">
         <div className="text-center text-xl text-orange-700">
-          ARE YOU SURE DELETE THIS ITEM?
+          ARE YOU SURE DELETE THIS CHANNEL?
         </div>
       </div>
     );
@@ -34,7 +34,7 @@ const ModalDelete: FC<Props> = ({ onClose, id }) => {
     <Modal
       onClose={onClose}
       content={contentModal}
-      title="Delete This Item"
+      title="Delete This Channel"
       onSubmit={handleDelete}
       contentBottom={
         <button className={classes.submit} onClick={handleDelete}>
